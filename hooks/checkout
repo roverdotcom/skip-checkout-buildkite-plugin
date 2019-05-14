@@ -3,3 +3,7 @@
 set -euo pipefail
 
 echo "--- Skipping checkout"
+
+echo "PWD: $PWD"
+
+ls -l
