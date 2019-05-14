@@ -4,6 +4,9 @@ set -euo pipefail
 
 echo "--- Skipping checkout"
 
-echo "PWD: $PWD"
-
-ls -l
+if [[ "${BUILDKITE_PLUGIN_SKIP_CHECKOUT_CLEAN_BUILDKITE_FOLDER:-false}" =~ (true|on|1) ]] ; then
+    if [ -d .buildkite ] ; then
+        echo "Removing .buildkite folder"
+        rm -rf .buildkite
+    fi
+fi
